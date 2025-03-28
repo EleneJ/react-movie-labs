@@ -3,7 +3,8 @@ import { getUpcomingMovies } from "../api/tmdb-api";
 import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../components/spinner";
-import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import IconButton from "@mui/material/IconButton";
 
 const UpcomingMoviesPage = () => {
     const { data, error, isPending, isError } = useQuery({
@@ -21,18 +22,23 @@ const UpcomingMoviesPage = () => {
 
   const movies = data.results;
 
-  const favorites = movies.filter((m) => m.favorite);
-  localStorage.setItem("favorites", JSON.stringify(favorites));
+  const playlist = movies.filter((m) => m.playlist);
+  localStorage.setItem("playlist", JSON.stringify(playlist));
 
-  const addToFavorites = (movieId) => true;
+  const addToPlaylist = (movieId) => true;
 
   return (
     <PageTemplate
       title="Upcoming Movies"
       movies={movies}
-      action={(movie) => <AddToFavoritesIcon movie={movie} />}
+      
+      action={(movie) => (
+        <IconButton onClick={() => addToPlaylist(movie.id)}>
+          <PlaylistAddIcon />
+        </IconButton>
+      )}
     />
   );
 };
-
+ 
 export default UpcomingMoviesPage;
