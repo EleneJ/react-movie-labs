@@ -5,7 +5,7 @@ import PageTemplate from "../components/templateMoviePage";
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner'
-// import useMovie from "../hooks/useMovie";
+import { getMovieDetails, getRecommendedMovies } from "../api/tmdb-api";
 
 const MoviePage = (props) => {
 
