@@ -1,44 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import { getUpcomingMovies } from "../api/tmdb-api";
 import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../components/spinner";
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import IconButton from "@mui/material/IconButton";
+import { MoviesContext } from "../contexts/moviesContext";  
+import AddToPlaylistIcon from "../components/cardIcons/addToPlaylistIcon"; 
 
 const UpcomingMoviesPage = () => {
     const { data, error, isPending, isError } = useQuery({
         queryKey: ["upcoming"],
         queryFn: getUpcomingMovies,
-      });
+    });
 
-  if (isPending) {
-    return <Spinner />;
-  }
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
-  }
+    // Get the addToPlaylist function from context
+    const { addToPlaylist } = useContext(MoviesContext);
 
-  const movies = data.results;
+    if (isPending) {
+        return <Spinner />;
+    }
 
-  const playlist = movies.filter((m) => m.playlist);
-  localStorage.setItem("playlist", JSON.stringify(playlist));
+    if (isError) {
+        return <h1>{error.message}</h1>;
+    }
 
-  const addToPlaylist = (movieId) => true;
+    const movies = data.results;
 
-  return (
-    <PageTemplate
-      title="Upcoming Movies"
-      movies={movies}
-      
-      action={(movie) => (
-        <IconButton onClick={() => addToPlaylist(movie.id)}>
-          <PlaylistAddIcon />
-        </IconButton>
-      )}
-    />
-  );
+    return (
+        <PageTemplate
+            title="Upcoming Movies"
+            movies={movies}
+            action={(movie) => (
+                <AddToPlaylistIcon movie={movie} />
+            )}
+        />
+    );
 };
- 
+
 export default UpcomingMoviesPage;
