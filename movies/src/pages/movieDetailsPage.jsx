@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import MovieDetails from "../components/movieDetails/";
+import MovieDetails from "../components/movieDetails/";  // No need to redefine this here
 import PageTemplate from "../components/templateMoviePage";
 import { getMovie, getRecommendedMovies } from "../api/tmdb-api";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../components/spinner";
+import WatchTrailerIcon from "../components/cardIcons/watchTrailerIcon.jsx";
 
 const MoviePage = (props) => {
   const { id } = useParams();
+  const [trailer, setTrailer] = useState(null);
 
+  // Fetch the movie details
   const { data: movie, error, isPending, isError } = useQuery({
     queryKey: ["movie", { id: id }],
     queryFn: getMovie,
   });
 
+  // Fetch recommended movies
   const { data: recommendedMovies, isPending: isPendingRecommended } = useQuery({
     queryKey: ["recommended", { id }],
     queryFn: getRecommendedMovies,
   });
+
+  // Fetch the movie trailer
+  useEffect(() => {
+    const fetchTrailer = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${import.meta.env.VITE_TMDB_KEY}`
+      );
+      const data = await response.json();
+      if (data.results.length > 0) {
+        setTrailer(data.results[0].key); // Set the trailer key (assuming the first result is the official trailer)
+      }
+    };
+    if (id) {
+      fetchTrailer();
+    }
+  }, [id]);
 
   if (isPending) {
     return <Spinner />;
@@ -32,9 +52,8 @@ const MoviePage = (props) => {
       {movie ? (
         <>
           <PageTemplate movie={movie}>
-            <MovieDetails movie={movie} />
-
-            {/* Suggested Movies Section */}
+            <MovieDetails movie={movie} trailer={trailer} /> {/* Pass trailer to MovieDetails */}
+            {trailer && <WatchTrailerIcon trailerKey={trailer} />}
             <div>
               <h2>Suggested Movies</h2>
               {isPendingRecommended ? (

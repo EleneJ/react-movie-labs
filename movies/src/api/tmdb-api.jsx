@@ -135,3 +135,11 @@ export const getMovie = (args) => {
         throw error;
       });
   };
+
+  export const getMovieVideos = async (id) => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${import.meta.env.VITE_TMDB_KEY}`
+    );
+    const data = await response.json();
+    return data.results;
+  };
