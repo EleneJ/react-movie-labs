@@ -18,10 +18,12 @@ const Header = (props ) => {
         justifyContent: "space-around",
         flexWrap: "wrap",
         marginBottom: 1.5,
+        backgroundColor: "#666666",  
+          color: "#000000" 
       }}
       >
       <IconButton aria-label="go back" onClick={() => navigate(-1)}>
-        <ArrowBackIcon color="primary" fontSize="large" />
+      <ArrowBackIcon sx={{ color: "#8F4700" }} fontSize="large" /> 
       </IconButton>
 
       <Typography variant="h4" component="h3">
@@ -29,7 +31,7 @@ const Header = (props ) => {
       </Typography>
       
       <IconButton aria-label="go forward" onClick={() => navigate(+1)}>
-        <ArrowForwardIcon color="primary" fontSize="large" />
+        <ArrowForwardIcon sx={{ color: "#8F4700" }} fontSize="large" />
       </IconButton>
 
     </Paper>

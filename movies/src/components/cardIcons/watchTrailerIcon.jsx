@@ -17,22 +17,17 @@ const WatchTrailerIcon = ({ trailerKey }) => {
 
   return (
     <>
-      <IconButton aria-label="watch trailer" onClick={handleClickOpen}>
-        <YouTubeIcon color="primary" fontSize="large" />
-      </IconButton>
 
       <Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth>
         <DialogTitle>Watch Trailer</DialogTitle>
         <DialogContent>
-          <iframe
-            width="100%"
-            height="400"
-            src={`https://www.youtube.com/embed/${trailerKey}`}
-            title="Movie Trailer"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+        <iframe
+  sx={{ width: "40%", height: "400px" }} // Adjust percentage or pixel value
+  src={`https://www.youtube.com/embed/${trailerKey}`}
+  title="Movie Trailer"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

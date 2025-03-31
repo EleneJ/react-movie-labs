@@ -34,41 +34,93 @@ const MovieDetails = ({ movie, trailer }) => {
         {movie.overview}
       </Typography>
 
-      <Paper component="ul" sx={{ ...root }}>
-        <li>
-          <Chip label="Genres" sx={{ ...chip }} color="primary" />
-        </li>
-        {movie.genres.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} sx={{ ...chip }} />
-          </li>
-        ))}
-      </Paper>
-      <Paper component="ul" sx={{ ...root }}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
-        <Chip icon={<MonetizationIcon />} label={`${movie.revenue.toLocaleString()}`} />
-        <Chip icon={<StarRate />} label={`${movie.vote_average} (${movie.vote_count})`} />
-        <Chip label={`Released: ${movie.release_date}`} />
-      </Paper>
+      <Paper component="ul" sx={{ ...root, backgroundColor: "#666666" }}> {/* Change background color of the wrapper */}
+  <li>
+    <Chip 
+      label="Genres" 
+      sx={{ 
+        ...chip, 
+        backgroundColor: "#8F4700", // Keep the color for the Chip
+        color: "#FFFFFF"
+      }} 
+    />
+  </li>
+  {movie.genres.map((g) => (
+    <li key={g.name}>
+      <Chip 
+        label={g.name} 
+        sx={{ 
+          ...chip, 
+          backgroundColor: "#E0E0E1", // Keep the color for the Chip
+          color: "#09070D" 
+        }} 
+      />
+    </li>
+  ))}
+</Paper>
 
-      <Paper component="ul" sx={{ ...root }}>
-        <li>
-          <Chip label="Production Countries" sx={{ ...chip }} color="primary" />
-        </li>
-        {movie.production_countries && movie.production_countries.length > 0 ? (
-          movie.production_countries.map((country) => (
-            <li key={country.iso_3166_1}>
-              <Chip label={country.name} sx={{ ...chip }} />
-            </li>
-          ))
-        ) : (
-          <li>
-            <Chip label="Unknown" sx={{ ...chip }} />
-          </li>
-        )}
-      </Paper>
+<Paper component="ul" sx={{ ...root, backgroundColor: "#666666" }}> {/* Wrapper background color */}
+  <Chip 
+    icon={<AccessTimeIcon />} 
+    label={`${movie.runtime} min.`} 
+    sx={{ 
+      ...chip, 
+      backgroundColor: "#E0E0E1", // Keep the color for the Chip
+      color: "#09070D" 
+    }} 
+  />
+  <Chip 
+    icon={<StarRate />} 
+    label={`${movie.vote_average} (${movie.vote_count})`} 
+    sx={{ 
+      ...chip, 
+      backgroundColor: "#E0E0E1", // Keep the color for the Chip
+      color: "#09070D" 
+    }} 
+  />
+  <Chip 
+    label={`Released: ${movie.release_date}`} 
+    sx={{ 
+      ...chip, 
+      backgroundColor: "#E0E0E1", // Keep the color for the Chip
+      color: "#09070D" 
+    }} 
+  />
+</Paper>
 
-      {/* Watch Trailer Section */}
+
+<Paper component="ul" sx={{ ...root, backgroundColor: "#666666" }}> {/* Change background color of the wrapper */}
+  <li>
+    <Chip 
+      label="Production Countries" 
+      sx={{ 
+        ...chip, 
+        backgroundColor: "#8F4700", // Keep the color for the Chip
+        color: "#FFFFFF"
+      }} 
+    />
+  </li>
+  {movie.production_countries && movie.production_countries.length > 0 ? (
+    movie.production_countries.map((country) => (
+      <li key={country.iso_3166_1}>
+        <Chip 
+          label={country.name} 
+          sx={{ 
+            ...chip, 
+            backgroundColor: "#E0E0E1", // Keep the color for the Chip
+            color: "#09070D" 
+          }} 
+        />
+      </li>
+    ))
+  ) : (
+    <li>
+      <Chip label="Unknown" sx={{ ...chip }} />
+    </li>
+  )}
+</Paper>
+
+
       {trailer && (
         <div>
           <Typography variant="h6" component="h4">
@@ -79,7 +131,6 @@ const MovieDetails = ({ movie, trailer }) => {
             height="400"
             src={`https://www.youtube.com/embed/${trailer}`}
             title="Movie Trailer"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -90,14 +141,18 @@ const MovieDetails = ({ movie, trailer }) => {
       {trailer && <WatchTrailerIcon trailerKey={trailer} />}
 
       <Fab
-        color="secondary"
-        variant="extended"
-        onClick={() => setDrawerOpen(true)}
-        sx={{
-          position: "fixed",
-          bottom: "1em",
-          right: "1em",
-        }}
+    variant="extended"
+    onClick={() => setDrawerOpen(true)}
+    sx={{
+    position: "fixed",
+    bottom: "1em",
+    right: "1em",
+    backgroundColor: "#8F4700",
+    color: "#FFFFFF",
+    "&:hover": {
+      backgroundColor: "#8F4700", 
+      },
+    }}
       >
         <NavigationIcon />
         Reviews

@@ -203,28 +203,43 @@ const ReviewForm = ({ movie }) => {
         />
 
         <Box sx={styles.buttons}>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={styles.submit}
-          >
-            Submit
-          </Button>
-          <Button
-            type="reset"
-            variant="contained"
-            color="secondary"
-            sx={styles.submit}
-            onClick={() => {
-              reset({
-                author: "",
-                content: "",
-              });
-            }}
-          >
-            Reset
-          </Button>
+        <Box sx={styles.buttons}>
+  <Button
+    type="submit"
+    variant="contained"
+    sx={{
+      ...styles.submit,
+      backgroundColor: "#8F4700", // Primary color (hex code)
+      color: "#FFFFFF", // Text color (white)
+      "&:hover": {
+        backgroundColor: "#8F4700", // Hover effect color (darker shade of primary)
+      },
+    }}
+  >
+    Submit
+  </Button>
+  <Button
+    type="reset"
+    variant="contained"
+    sx={{
+      ...styles.submit,
+      backgroundColor: "#8F4700", // Secondary color (hex code)
+      color: "#FFFFFF", // Text color (white)
+      "&:hover": {
+        backgroundColor: "#8F4700", // Hover effect color (darker shade of secondary)
+      },
+    }}
+    onClick={() => {
+      reset({
+        author: "",
+        content: "",
+      });
+    }}
+  >
+    Reset
+  </Button>
+</Box>
+
         </Box>
       </form>
     </Box>
