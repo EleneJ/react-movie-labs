@@ -9,7 +9,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
-import WatchTrailerIcon from "../cardIcons/watchTrailerIcon"; // Import WatchTrailerIcon
+import WatchTrailerIcon from "../cardIcons/watchTrailerIcon"; 
 
 const root = {
   display: "flex",
@@ -34,13 +34,13 @@ const MovieDetails = ({ movie, trailer }) => {
         {movie.overview}
       </Typography>
 
-      <Paper component="ul" sx={{ ...root, backgroundColor: "#666666" }}> {/* Change background color of the wrapper */}
+      <Paper component="ul" sx={{ ...root, backgroundColor: "#666666" }}> 
   <li>
     <Chip 
       label="Genres" 
       sx={{ 
         ...chip, 
-        backgroundColor: "#8F4700", // Keep the color for the Chip
+        backgroundColor: "#8F4700", 
         color: "#FFFFFF"
       }} 
     />
@@ -51,7 +51,7 @@ const MovieDetails = ({ movie, trailer }) => {
         label={g.name} 
         sx={{ 
           ...chip, 
-          backgroundColor: "#E0E0E1", // Keep the color for the Chip
+          backgroundColor: "#E0E0E1", 
           color: "#09070D" 
         }} 
       />
@@ -59,13 +59,13 @@ const MovieDetails = ({ movie, trailer }) => {
   ))}
 </Paper>
 
-<Paper component="ul" sx={{ ...root, backgroundColor: "#666666" }}> {/* Wrapper background color */}
+<Paper component="ul" sx={{ ...root, backgroundColor: "#666666" }}> 
   <Chip 
     icon={<AccessTimeIcon />} 
     label={`${movie.runtime} min.`} 
     sx={{ 
       ...chip, 
-      backgroundColor: "#E0E0E1", // Keep the color for the Chip
+      backgroundColor: "#E0E0E1", 
       color: "#09070D" 
     }} 
   />
@@ -74,7 +74,7 @@ const MovieDetails = ({ movie, trailer }) => {
     label={`${movie.vote_average} (${movie.vote_count})`} 
     sx={{ 
       ...chip, 
-      backgroundColor: "#E0E0E1", // Keep the color for the Chip
+      backgroundColor: "#E0E0E1", 
       color: "#09070D" 
     }} 
   />
@@ -82,20 +82,20 @@ const MovieDetails = ({ movie, trailer }) => {
     label={`Released: ${movie.release_date}`} 
     sx={{ 
       ...chip, 
-      backgroundColor: "#E0E0E1", // Keep the color for the Chip
+      backgroundColor: "#E0E0E1", 
       color: "#09070D" 
     }} 
   />
 </Paper>
 
 
-<Paper component="ul" sx={{ ...root, backgroundColor: "#666666" }}> {/* Change background color of the wrapper */}
+<Paper component="ul" sx={{ ...root, backgroundColor: "#666666" }}> 
   <li>
     <Chip 
       label="Production Countries" 
       sx={{ 
         ...chip, 
-        backgroundColor: "#8F4700", // Keep the color for the Chip
+        backgroundColor: "#8F4700", 
         color: "#FFFFFF"
       }} 
     />
@@ -107,7 +107,7 @@ const MovieDetails = ({ movie, trailer }) => {
           label={country.name} 
           sx={{ 
             ...chip, 
-            backgroundColor: "#E0E0E1", // Keep the color for the Chip
+            backgroundColor: "#E0E0E1", 
             color: "#09070D" 
           }} 
         />

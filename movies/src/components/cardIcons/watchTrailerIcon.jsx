@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import YouTubeIcon from "@mui/icons-material/YouTube";  // You can use the YouTube icon or any icon you prefer
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from "@mui/material";
 
-// Modal to show the trailer
 const WatchTrailerIcon = ({ trailerKey }) => {
   const [open, setOpen] = useState(false);
 

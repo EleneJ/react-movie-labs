@@ -24,7 +24,7 @@ const TopRatedMoviesPage = () => {
     <PageTemplate
       title="Top Rated Movies"
       movies={movies}
-      action={() => {}}  /* Empty function if no action is needed */
+      action={() => {}}  
     />
   );
 };

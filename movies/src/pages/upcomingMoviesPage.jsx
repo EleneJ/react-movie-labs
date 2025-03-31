@@ -12,8 +12,6 @@ const UpcomingMoviesPage = () => {
         queryFn: getUpcomingMovies,
     });
 
-
-    // Get the addToPlaylist function from context
     const { addToPlaylist } = useContext(MoviesContext);
 
     if (isPending) {

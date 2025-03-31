@@ -209,10 +209,10 @@ const ReviewForm = ({ movie }) => {
     variant="contained"
     sx={{
       ...styles.submit,
-      backgroundColor: "#8F4700", // Primary color (hex code)
-      color: "#FFFFFF", // Text color (white)
+      backgroundColor: "#8F4700", 
+      color: "#FFFFFF", 
       "&:hover": {
-        backgroundColor: "#8F4700", // Hover effect color (darker shade of primary)
+        backgroundColor: "#8F4700", 
       },
     }}
   >
@@ -223,10 +223,10 @@ const ReviewForm = ({ movie }) => {
     variant="contained"
     sx={{
       ...styles.submit,
-      backgroundColor: "#8F4700", // Secondary color (hex code)
-      color: "#FFFFFF", // Text color (white)
+      backgroundColor: "#8F4700", 
+      color: "#FFFFFF", 
       "&:hover": {
-        backgroundColor: "#8F4700", // Hover effect color (darker shade of secondary)
+        backgroundColor: "#8F4700", 
       },
     }}
     onClick={() => {

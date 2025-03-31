@@ -9,7 +9,7 @@ const PlaylistPage = () => {
   return (
     <PageTemplate
       title="My Playlist"
-      movies={playlist} // Only show movies in playlist
+      movies={playlist} 
       action={(movie) => <RemoveFromPlaylistIcon movie={movie} />}
     />
   );

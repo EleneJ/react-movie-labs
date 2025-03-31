@@ -4,11 +4,11 @@ import IconButton from "@mui/material/IconButton";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd"; // Material-UI Playlist Icon
 
 const AddToPlaylistIcon = ({ movie }) => {
-  const context = useContext(MoviesContext); // Get the context
+  const context = useContext(MoviesContext); 
 
   const handleAddToPlaylist = (e) => {
-    e.preventDefault(); // Prevent default action (form submission, etc.)
-    context.addToPlaylist(movie); // Call addToPlaylist from context
+    e.preventDefault(); 
+    context.addToPlaylist(movie); 
   };
 
   return (
